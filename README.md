@@ -14,3 +14,7 @@ XAVIER ALEXANDER PÉREZ BONILLA
 KEVIN ALEJANDRO ZELAYA CHAVEZ 
 
 </p>
+<p> 
+En la carpeta esta el ejercio
+
+</p>
