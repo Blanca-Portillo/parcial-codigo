@@ -15,3 +15,30 @@ fig = make_subplots(
                     "VENTAS DE TORNILLOS POR MES", "VENTAS TOTALES POR MES",
                     "COMPARACION DE VENTAS DE CADA PRODUCTO DE CADA MES ")
 )
+
+
+# Gráfico de barras para Ventas 
+fig.add_trace(go.Bar(x=meses, y=ventas_herramientas, name="Herramientas", marker_color='orange'), row=1, col=1)
+fig.add_trace(go.Bar(x=meses, y=ventas_clavos, name="Clavos", marker_color='blue'), row=1, col=2)
+fig.add_trace(go.Bar(x=meses, y=ventas_tornillos, name="Tornillos", marker_color='green'), row=2, col=1)
+
+
+# Gráfico de línea de la tendencia total de ventas 
+total_ventas = [a + b + c for a, b, c in zip(ventas_clavos, ventas_tornillos, ventas_herramientas)]
+fig.add_trace(go.Scatter(x=meses, y=total_ventas, mode='lines', name="Total Ventas", line=dict(color='purple', width=4)), row=2, col=2)
+
+# Gráfico de dispersión para comparar los tres productos 
+fig.add_trace(go.Scatter(x=meses, y=ventas_clavos, mode='lines+markers', name="Clavos"), row=3, col=1)
+fig.add_trace(go.Scatter(x=meses, y=ventas_tornillos, mode='lines+markers', name="Tornillos"), row=3, col=1)
+fig.add_trace(go.Scatter(x=meses, y=ventas_herramientas, mode='lines+markers', name="Herramientas"), row=3, col=1)
+
+# diseño del tablero
+fig.update_layout(
+    title_text="Análisis de Ventas Mensuales de Ferreteria Super Santa Helena", 
+    height=900, 
+    showlegend=True,
+    title_font_size=24
+)
+
+
+fig.show()
